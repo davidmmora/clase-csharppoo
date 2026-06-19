@@ -1,0 +1,229 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Guía de POO con Básculas";
+}
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Programación Orientada a Objetos en C#</h1>
+    <p class="lead">Entendiendo los pilares fundamentales (Usando básculas como ejemplo)</p>
+</div>
+
+<div class="container">
+    <!-- 1. CLASES Y OBJETOS -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h2 class="h4 mb-0">1. Clases y Objetos</h2>
+        </div>
+        <div class="card-body">
+            <p><strong>Clase:</strong> Es el molde o plano. Define qué propiedades (datos) y métodos (acciones) tendrán las cosas que construyas con este molde.</p>
+            <p><strong>Objeto:</strong> Es la creación física en la memoria de ese molde. Puedes crear múltiples objetos de la misma clase.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+// CLASE (El molde)
+public class Bascula {
+    public string Marca { get; set; }
+    public void Encender() { /* ... */ }
+}
+
+// OBJETO (La creación)
+Bascula basculaTorrey = new Bascula();
+basculaTorrey.Marca = "Torrey";
+            </code></pre>
+            <div class="alert alert-secondary mt-3">
+                <strong>💡 Analogía cotidiana:</strong> Imagina que la <strong>Clase</strong> es el plano arquitectónico de una casa. No puedes vivir en el plano. El <strong>Objeto</strong> es la casa ya construida en la calle con ladrillos y pintura real.
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. ENCAPSULAMIENTO -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h2 class="h4 mb-0">2. Encapsulamiento</h2>
+        </div>
+        <div class="card-body">
+            <p>Es la técnica de ocultar el estado interno (variables privadas) de un objeto y obligar a interactuar con él solo mediante métodos o propiedades controladas públicas. Evita que modifiquen datos críticos desde afuera.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+private decimal _capacidad; // Oculto
+
+public decimal CapacidadMaxima 
+{
+    get { return _capacidad; } // Puedes leerlo
+    private set { _capacidad = value; } // PERO NO puedes modificarlo desde afuera
+}
+            </code></pre>
+            <div class="alert alert-secondary mt-3">
+                <strong>💡 Analogía cotidiana:</strong> Piensa en un <strong>Cajero Automático (ATM)</strong>. El cajero tiene tu dinero (estado interno oculto), pero tú no puedes abrir la caja fuerte y tomar lo que quieras o editar tu saldo mágicamente. Tienes que usar el teclado e interactuar con los botones <code>Retirar()</code> o <code>Depositar()</code> (métodos públicos) para que él mismo modifique el dinero de forma segura.
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. HERENCIA -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-info text-white">
+            <h2 class="h4 mb-0">3. Herencia</h2>
+        </div>
+        <div class="card-body">
+            <p>Permite crear nuevas clases basadas en clases existentes, "heredando" sus propiedades y métodos para evitar repetir código. Fomenta la reutilización.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+// BasculaDigital "es una" Bascula (hereda todo lo de Bascula)
+public class BasculaDigital : Bascula 
+{
+    public int Bateria { get; set; } // Más sus propias características nuevas
+}
+            </code></pre>
+            <div class="alert alert-secondary mt-3">
+                <strong>💡 Analogía cotidiana:</strong> Tienes una clase base llamada <code>Vehículo</code> que tiene características como <code>Ruedas</code> y <code>Arrancar()</code>. Luego creas clases derivadas como <code>Coche</code> y <code>Motocicleta</code>. En lugar de programar cómo arranca un coche y una moto desde cero, ambas <strong>heredan</strong> el motor de Vehículo y solo agregan lo suyo (ej. el Coche agrega <code>Cajuela</code> y la Moto <code>Manubrio</code>).
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. POLIMORFISMO -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-warning text-dark">
+            <h2 class="h4 mb-0">4. Polimorfismo</h2>
+        </div>
+        <div class="card-body">
+            <p>Significa "muchas formas". Es la capacidad de dar la <strong>misma orden</strong> a distintos objetos, pero que cada uno responda de forma diferente.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+// Ambas heredan de Bascula, pero calibran distinto
+Bascula b1 = new BasculaDigital();
+Bascula b2 = new BasculaMecanica();
+
+b1.Calibrar(); // Hace un reseteo digital a 0.00
+b2.Calibrar(); // Te pide que gires la perilla mecánica
+            </code></pre>
+            <div class="alert alert-secondary mt-3">
+                <strong>💡 Analogía cotidiana:</strong> Imagina una orquesta. Tienes diferentes instrumentos (Violín, Trompeta, Tambor). Todos son instrumentos y a todos se les puede dar la misma orden: <code>Tocar()</code>. Sin embargo, el violín frotará cuerdas, la trompeta soplará aire y el tambor golpeará el parche. ¡Misma orden, diferente respuesta!
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ABSTRACCIÓN -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h2 class="h4 mb-0">5. Abstracción</h2>
+        </div>
+        <div class="card-body">
+            <p>Consiste en enfocarse en qué debe hacer un objeto ignorando los detalles internos de cómo lo hace. En C# se logra mucho con clases <code>abstract</code>, las cuales no se pueden instanciar solas, sirven solo como base que OBLIGAN a sus hijos a implementar ciertos métodos.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+public abstract class Bascula {
+    // Te OBLIGO a que tengas un método Calibrar, pero yo no te digo cómo se hace.
+    public abstract void Calibrar(); 
+}
+            </code></pre>
+            <div class="alert alert-secondary mt-3">
+                <strong>💡 Analogía cotidiana:</strong> Cuando manejas un coche, tú solo interactúas con el volante, el acelerador y el freno (una interfaz abstracta). El coche oculta la complejidad absurda de cómo inyecta la gasolina, cómo hacen chispa las bujías, y cómo giran los engranajes. A ti no te importan los detalles internos (Abstracción), tú solo quieres llamar a <code>Acelerar()</code>.
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. INTERFACES -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header text-white" style="background-color: #6f42c1;">
+            <h2 class="h4 mb-0">6. Interfaces (Contratos)</h2>
+        </div>
+        <div class="card-body">
+            <p>Una Interfaz es como un <strong>contrato estricto</strong>. No tiene código real, solo promesas. Si una clase decide implementar una interfaz, se compromete a tener esos métodos forzosamente. Es perfecto para compartir habilidades entre objetos que no tienen parentesco.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+// El contrato (La promesa)
+public interface IConectable {
+    void ConectarWifi();
+}
+
+// Una Báscula y una Televisión no tienen nada que ver, 
+// pero ambas firman el contrato IConectable
+public class BasculaDigital : IConectable {
+    public void ConectarWifi() { /* Conecta la báscula */ }
+}
+
+public class SmartTV : IConectable {
+    public void ConectarWifi() { /* Conecta la televisión */ }
+}
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- 7. COMPOSICIÓN -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header text-white bg-dark">
+            <h2 class="h4 mb-0">7. Composición</h2>
+        </div>
+        <div class="card-body">
+            <p>Es cuando construyes objetos usando otros objetos más pequeños, creando una relación <strong>"Tiene un"</strong> en lugar de "Es un" (Herencia). Esto es fundamental para evitar herencias gigantes y confusas.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+// Componente pequeño
+public class LectorDePeso {
+    public decimal LeerSensor() { return 10.5m; }
+}
+
+// La Báscula "TIENE UN" lector, no hereda de él. Está compuesta por él.
+public class Bascula {
+    private LectorDePeso _lector = new LectorDePeso();
+
+    public decimal Pesar() {
+        return _lector.LeerSensor(); 
+    }
+}
+            </code></pre>
+            <div class="alert alert-secondary mt-3">
+                <strong>💡 Analogía cotidiana:</strong> Un coche <strong>no hereda</strong> de una rueda, un coche <strong>tiene</strong> ruedas, <strong>tiene</strong> un motor y <strong>tiene</strong> asientos. El coche es el objeto final construido por la COMPOSICIÓN de objetos más pequeños.
+            </div>
+        </div>
+    </div>
+
+    <!-- 8. INYECCIÓN DE DEPENDENCIAS -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header text-white" style="background-color: #e83e8c;">
+            <h2 class="h4 mb-0">8. Inyección de Dependencias (DI)</h2>
+        </div>
+        <div class="card-body">
+            <p>Es un patrón de diseño donde un objeto no crea sus propias dependencias (como hicimos en Composición creando un <code>new LectorDePeso()</code>), sino que alguien más se las <strong>inyecta</strong> desde afuera. Esto facilita cambiar piezas y probar el código.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+// 1. Creamos una interfaz para el lector
+public interface ILector {
+    decimal Leer();
+}
+
+public class Bascula {
+    private ILector _lector;
+
+    // 2. INYECCIÓN: La báscula NO crea el lector. Lo pide por el constructor.
+    // "Dame cualquier cosa que cumpla con ILector y yo lo usaré"
+    public Bascula(ILector lectorInyectado) {
+        _lector = lectorInyectado;
+    }
+
+    public decimal Pesar() {
+        return _lector.Leer(); 
+    }
+}
+            </code></pre>
+            <div class="alert alert-secondary mt-3">
+                <strong>💡 Analogía cotidiana:</strong> Imagina una consola de videojuegos (La Clase). En lugar de que la consola tenga un juego soldado internamente y no lo puedas cambiar (sin inyección), la consola tiene una ranura. Tú (el creador) le insertas o <strong>inyectas</strong> el disco de juego (la dependencia) que tú quieras. Si el juego se raya, cambias el disco sin tener que desarmar la consola.
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. INTERFACES -->
+    <div class="card mb-4 shadow-sm">
+        <div class="card-header bg-dark text-white">
+            <h2 class="h4 mb-0">6. Interfaces</h2>
+        </div>
+        <div class="card-body">
+            <p>Es un contrato puro. Define acciones que una clase promete implementar. Una clase solo hereda de una clase padre, pero puede firmar (implementar) múltiples interfaces.</p>
+            <pre><code class="language-csharp bg-light p-3 d-block rounded">
+public interface IConectable {
+    void ConectarWifi(string red);
+}
+
+// BasculaDigital hereda de Bascula Y promete implementar IConectable
+public class BasculaDigital : Bascula, IConectable 
+{
+    public void ConectarWifi(string red) {
+        Console.WriteLine("Conectando a " + red);
+    }
+}
+            </code></pre>
+        </div>
+    </div>
+</div>

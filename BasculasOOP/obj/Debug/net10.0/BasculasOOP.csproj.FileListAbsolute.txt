@@ -1,0 +1,14 @@
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/bin/Debug/net10.0/BasculasOOP
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/bin/Debug/net10.0/BasculasOOP.deps.json
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/bin/Debug/net10.0/BasculasOOP.runtimeconfig.json
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/bin/Debug/net10.0/BasculasOOP.dll
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/bin/Debug/net10.0/BasculasOOP.pdb
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/BasculasOOP.GeneratedMSBuildEditorConfig.editorconfig
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/BasculasOOP.AssemblyInfoInputs.cache
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/BasculasOOP.AssemblyInfo.cs
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/BasculasOOP.csproj.CoreCompileInputs.cache
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/BasculasOOP.dll
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/refint/BasculasOOP.dll
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/BasculasOOP.pdb
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/BasculasOOP.genruntimeconfig.cache
+/Users/davidmayo/repos/kmmx/csharpObjetos/BasculasOOP/obj/Debug/net10.0/ref/BasculasOOP.dll
